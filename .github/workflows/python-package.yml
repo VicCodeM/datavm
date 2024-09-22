@@ -22,9 +22,5 @@ jobs:
 
     - name: Run tests
       run: |
-        python test.py
-        # O, para ejecutar automáticamente todos los tests
         python -m unittest discover -s .
-        # Asegúrate de que tienes un script de prueba
-        # Aquí podrías tener un script como test.py que contenga tus pruebas
-        python -m unittest discover -s tests  # Cambia 'tests' si es necesario
+
