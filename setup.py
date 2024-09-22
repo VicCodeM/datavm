@@ -12,7 +12,6 @@ setup(
         'numpy',
         'matplotlib',
         'seaborn',
-        'scikit-learn',
-        'sqlite3'
+        'scikit-learn'
     ],
 )
