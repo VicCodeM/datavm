@@ -15,11 +15,6 @@ def cargar_datos(ruta_archivo, tipo="csv"):
         return pd.read_excel(ruta_archivo)
     else:
         return "Tipo de archivo no soportado"
-# # Cargar archivo CSV
-# df = cargar_datos("datos.csv", tipo="csv")
-
-# # Cargar archivo Excel
-# df = cargar_datos("datos.xlsx", tipo="excel")
 
 # guardar datos
 def guardar_datos(df, ruta_archivo, tipo="csv"):
@@ -33,7 +28,7 @@ def guardar_datos(df, ruta_archivo, tipo="csv"):
         print(f"Datos guardados en {ruta_archivo} correctamente.")
     except Exception as e:
         print(f"Ocurrió un error: {e}")
-#guardar_datos(df,'datos1.csv')
+
 
 # Verificar nulos
 def verificar_nulos(df):
@@ -50,9 +45,6 @@ def verificar_nulos(df):
         return nulos_detalle
     else:
         return "No hay valores nulos en el DataFrame."
-# Verificar valores nulos en el DataFrame
-# nulos = verificar_nulos(df)
-# print(nulos)
 
 
 def eliminar_nulos(df):
@@ -68,18 +60,6 @@ def eliminar_nulos(df):
     else:
         print('No hay datos nulos en el DataFrame.')
         return df  # Devuelve el DataFrame original si no hay nulos
-
-# # Ejemplo de uso
-# data = {
-#     'Nombre': ['Ana', 'Luis', 'Carlos', 'Ana'],
-#     'Edad': [28, None, 22, None]
-# }
-# df = pd.DataFrame(data)
-
-# # Llamar a la función
-# df_sin_nulos = eliminar_nulos(df)
-# print(df_sin_nulos)
-
 
 # rellenar datos nulos
 def rellenar_nulos(df, metodo="media", cero=None):
@@ -98,30 +78,6 @@ def rellenar_nulos(df, metodo="media", cero=None):
         else:
             print(f"Método '{metodo}' no soportado.")
     return df
-# # Ejemplo de uso
-# # Llamar a la función
-# # Rellenar con la media
-# df_rellenado_media = rellenar_nulos(df[['Edad']], metodo='media')
-# print("Rellenado con media:")
-# print(df_rellenado_media)
-
-# # Rellenar con 0
-# df_rellenado_0 = rellenar_nulos(df[['Salario']], metodo='valor', valor=0)
-# print("\nRellenado con 0:")
-# print(df_rellenado_0)
-
-# # Rellenar con la moda
-# df_rellenado_moda = rellenar_nulos(df[['Edad']], metodo='moda')
-# print("\nRellenado con moda:")
-# print(df_rellenado_moda)
-
-
-
-# df_rellenado = rellenar_nulos(df, metodo='media')  # Rellenar nulos en todo el DataFrame
-# print(df_rellenado)
-
-# rellenar = rellenar_nulos(df[['Edad']], metodo='moda')
-# print(rellenar)
 
 # Datos duplicados
 def verificar_duplicados(df):
@@ -137,9 +93,6 @@ def verificar_duplicados(df):
         return filas_duplicadas
     else:
         return "No se encontraron duplicados en el DataFrame."
-# # Ejemplo de uso
-# duplicados = verificar_duplicados(df)
-# print(duplicados)
 
 
 # Eliminar datos duplicados
@@ -157,11 +110,6 @@ def eliminar_duplicados(df):
     else:
         return "No hay duplicados en el DataFrame."
 
-# # Ejemplo de uso
-# df_sin_duplicados = eliminar_duplicados(df)
-# print(df_sin_duplicados)
-
-
 
 # normalicacion de datos 
 def normalizar_datos(df, metodo):
@@ -178,8 +126,6 @@ def normalizar_datos(df, metodo):
             return df
     else:
         return "Método no soportado"
-# normalizar =normalizar_datos(df, metodo="moda")
-# print(normalizar)
 
 # Visualisar con grafica
 def visualizar_histograma(df, columna, hits):
@@ -188,7 +134,7 @@ def visualizar_histograma(df, columna, hits):
     plt.xlabel(columna)
     plt.ylabel("Frecuencia")
     plt.show()
-# visualizar_histograma(df,'Edad',10)
+
 
 # Calcular correlacion
 def calcular_correlacion(df):
@@ -200,7 +146,6 @@ def visualizar_datos(df, x, y):
     sns.scatterplot(data=df, x=x, y=y)
     plt.title(f'Gráfico de {y} vs {x}')
     plt.show()
-#visualizar_datos(df, x='columna1', y='columna2')
 
 #vizualizar todos los datos
 def visualizar_todo(df):
@@ -234,16 +179,6 @@ def eliminar_columnas(df, columnas):
     
     return df_limpio
 
-
-# Ejemplo de uso
-# # Llamar a la función para eliminar una columna
-# df_sin_columna = eliminar_columnas(df, 'Salario')
-# print(df_sin_columna)
-
-# # Llamar a la función para eliminar múltiples columnas
-# df_sin_columnas = eliminar_columnas(df, ['Ciudad', 'Edad'])
-# print(df_sin_columnas)
-
 #orednar columnas
 def ordenar_columnas(df, orden):
     if not isinstance(df, pd.DataFrame):
@@ -263,10 +198,6 @@ def ordenar_columnas(df, orden):
     df_resultado = df[columnas_existentes]
     return df_resultado
 
-# Ejemplo de uso
-# Llamar a la función para ordenar columnas
-# df_ordenado = ordenar_columnas(df, ['Salario', 'Nombre', 'Edad'])
-# print(df_ordenado)
 
 def renombrar_columnas(df, diccionario):
     if not isinstance(df, pd.DataFrame):
@@ -283,19 +214,6 @@ def renombrar_columnas(df, diccionario):
     df_resultado = df.rename(columns=nuevas_columnas)
     return df_resultado
 
-# Ejemplo de uso
-# diccionario = {
-#     'Nombre': 'Name',
-#     'Edad': 'Age',
-#     'Salario': 'Salary',
-#     'Ciudad': 'City'
-# }
-
-# # Llamar a la función para traducir títulos de las columnas
-# df_traducido = renombrar_columnas(df, diccionario)
-# print(df_traducido)
-
-
 #Conectar sqlite
 def guardar_en_sql(archivo_csv, nombre_tabla, db_name):
     # Cargar el archivo CSV en un DataFrame
@@ -311,7 +229,3 @@ def guardar_en_sql(archivo_csv, nombre_tabla, db_name):
     conn.close()
     
     return f"Datos guardados en la tabla '{nombre_tabla}' de la base de datos '{db_name}'"
-
-# Ejemplo de uso
-# resultado = guardar_en_sql('movies5.csv', 'movies', 'mi_base_datos.sqlite')
-# print(resultado)
