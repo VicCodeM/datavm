@@ -5,8 +5,6 @@ import sklearn as sk
 import seaborn as sns
 import sqlite3
 
-
-
 # cargar datos csv
 def cargar_datos(ruta_archivo, tipo="csv"):
     if tipo == "csv":
