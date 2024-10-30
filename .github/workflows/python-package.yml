@@ -12,13 +12,14 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
-        python-version: '3.11'  # Cambia a una versión anterior
+        python-version: '3.12.5'
 
-    - name: Install setuptools
-      run: python -m pip install --upgrade setuptools
+    - name: Install distutils
+      run: |
+        sudo apt-get install python3-distutils  # Este paso es para Linux. Para Windows, considera usar una alternativa.
 
     - name: Cache dependencies
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       with:
         path: ~/.cache/pip
         key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
