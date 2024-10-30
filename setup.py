@@ -5,13 +5,12 @@ setup(
     version='0.1.0',
     packages=find_packages(),
     install_requires=[
-    'pandas>=1.0',
-    'numpy<2.0',  # Restringe a versiones 1.x
-    'matplotlib>=3.0',
-    'seaborn>=0.11',
-    'scikit-learn>=0.24'
-     ],
-
+        'pandas>=1.0',
+        'numpy<2.0',  # Restringe a versiones 1.x
+        'matplotlib>=3.0',
+        'seaborn>=0.11',
+        'scikit-learn>=0.24'
+    ],
     python_requires='>=3.12',
     author='Víctor M.',
     author_email='vico.luis.ads@gmail.com',
