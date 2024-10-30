@@ -4,7 +4,7 @@ on: [push, pull_request]
 
 jobs:
   build:
-    runs-on: windows-latest  # Cambiado a Windows
+    runs-on: windows-latest
 
     steps:
     - uses: actions/checkout@v2
@@ -12,12 +12,15 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
-        python-version: '3.12.5'  # Cambia a la versión que necesites
+        python-version: '3.11'  # Cambia a una versión anterior
+
+    - name: Install setuptools
+      run: python -m pip install --upgrade setuptools
 
     - name: Cache dependencies
       uses: actions/cache@v2
       with:
-        path: C:\Users\runneradmin\AppData\Local\pip\cache  # Ruta para Windows
+        path: ~/.cache/pip
         key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
         restore-keys: |
           ${{ runner.os }}-pip-
