@@ -14,9 +14,9 @@ jobs:
       with:
         python-version: '3.12.5'
 
-    - name: Install distutils
+    - name: Upgrade setuptools
       run: |
-        sudo apt-get install python3-distutils  # Este paso es para Linux. Para Windows, considera usar una alternativa.
+        python -m pip install --upgrade pip setuptools
 
     - name: Cache dependencies
       uses: actions/cache@v3
