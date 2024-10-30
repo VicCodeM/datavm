@@ -4,16 +4,23 @@ on: [push, pull_request]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
 
     - name: Set up Python
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v4
       with:
-        python-version: '3.12.5'  # Cambia a la versión que necesites
+        python-version: '3.12.5'
+
+    - name: Cache dependencies
+      uses: actions/cache@v2
+      with:
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+        restore-keys: |
+          ${{ runner.os }}-pip-
 
     - name: Install dependencies
       run: |
@@ -22,5 +29,5 @@ jobs:
 
     - name: Run tests
       run: |
-        python -m unittest discover -s .
+        python -m unittest discover -s tests
 
